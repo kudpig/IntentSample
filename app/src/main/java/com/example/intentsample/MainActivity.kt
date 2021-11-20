@@ -23,8 +23,15 @@ class MainActivity : AppCompatActivity() {
         menuList.add(menu3)
         menuList.add(menu4)
 
-        val from = arrayOf("name", "price")
-        val to = intArrayOf(android.R.id.text1, android.R.id.text2)
+        /*
+        adapterの引数：
+        １）コンテキスト(thisでActivityを渡す)、２）data(リストに渡すデータ)、
+        ３）resource: Int(リストビュー各行のレイアウトを表すR値 ※今回はAndroidSDKデフォルトの2行表示セットを使用)、
+        ４）from: Array<String>...各画面部品に割り当てるデータを表すMutableMapのキー名配列
+        ５）to: IntArray...from記載のMutableMapのキー名に対応してデータを割り当てられる画面部品のR値配列
+         */
+        val from = arrayOf("name", "price") // text1, text2にそれぞれ対応
+        val to = intArrayOf(android.R.id.text1, android.R.id.text2) // SDKが用意しているデフォルトのUI部品(simple_list_item_2が所持)
         val adapter = SimpleAdapter(this@MainActivity, menuList, android.R.layout.simple_list_item_2, from, to)
         lvMenu.adapter = adapter
     }
